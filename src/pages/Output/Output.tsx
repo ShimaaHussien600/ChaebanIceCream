@@ -14,20 +14,17 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-function Home() {
+function Output() {
     const theme = useSelector((state: any) => state.themeReducer.theme);
 
     return (
         <ThemeProvider theme={theme}>
             <div className="App">
                 <GlobalStyle />
-                <header className="App-header">
-                    <SytledH1>React Themes Demo</SytledH1>
+                    <SytledH1>Output Page</SytledH1>
                     <ThemeSelector></ThemeSelector>
-                    <img src={logo} className="App-logo" alt="logo" />
-                </header>
             </div>
         </ThemeProvider>
     );
 }
-export default Home;
+export default Output;

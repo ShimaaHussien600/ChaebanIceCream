@@ -20,14 +20,15 @@ const ThemeSelector = () => {
 
     const dispatch = useDispatch();
     const changeTheme = (theme: any) => {
+
         dispatch(applyTheme(theme));
     }
 
 
     return (
         <div>
-            <StyledButton onClick={() => changeTheme(darkTheme)}>Dark</StyledButton>
             <StyledButton onClick={() => changeTheme(lightTheme)}>Light</StyledButton>
+            <StyledButton onClick={() => changeTheme(darkTheme)}>Dark</StyledButton>
             <StyledButton onClick={() => changeTheme(partyTheme)}>Party</StyledButton>
         </div>
     );

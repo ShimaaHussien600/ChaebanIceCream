@@ -4,8 +4,9 @@ export const darkTheme = {
     primary: "#77ccdd"
 }
 export const lightTheme = {
-    backgroundColor: "#e0e0e0",
+    backgroundColor: '#f9f4f4a6',
     textColor: "#ffffff",
+    textColorMain: "#f3827c",
     primary: "#55aacc"
 }
 export const partyTheme = {

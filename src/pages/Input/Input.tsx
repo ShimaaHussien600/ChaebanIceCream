@@ -35,10 +35,8 @@ const Nav = styled.nav`
 `
 const NavbarContainer = styled.div`
   height: 80px;
-  display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 11;
   width: 100%;
   padding: 0 24px;
   max-width: 700px;
@@ -50,21 +48,19 @@ const LogoImage = styled.img`
   width: 130px;
 `
 const Div = styled.div`
-  width: 100%;
   height: 100%;
-  margin-top : 160px;
+  margin-top : 80px;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  display: flex
 `
-const DateContainer = styled.div`
-  width: 50%;
+const DivContainer = styled.div`
   display: inline-flex;
+  overflow: hidden;
+  width: 50%;
+  margin-bottom: 40px;
   justify-content: space-between;
-  align-items: center;
-`
-const SubDiv = styled.div`
-  width: 200px;
-  justify-content: left;
   align-items: center;
 `
 //   font-family: "Helvetica Neue",Arial,sans-serif",
@@ -80,26 +76,27 @@ function Input() {
     <ThemeProvider theme={theme}>
       <div className="App">
         <GlobalStyle />
+
         <Nav>
           <LogoImage src={ICECREAM_LogoPink} alt="logo" />
           <NavbarContainer>
-          <SytledH1>Welcome to CHAEBAN ICE CREAM Challenge</SytledH1>
+            <SytledH1>Welcome to CHAEBAN ICE CREAM Challenge</SytledH1>
           </NavbarContainer>
         </Nav>
+
         <Div>
-        <DateContainer>
-          {/* <SubDiv> */}
-        <H3Text>Choose The date </H3Text>
-        {/* </SubDiv> */}
-        {/* <SubDiv> */}
-        <DatePickerDialog />
-        {/* </SubDiv> */}
-        </DateContainer>
-        {/* <DateContainer> */}
-        <MultilineTextField />
-        {/* </DateContainer> */}
-        <ThemeSelector />
+          <DivContainer>
+            <H3Text>Choose The date </H3Text>
+            <DatePickerDialog />
+          </DivContainer>
+          <DivContainer>
+            <H3Text>Enter your message </H3Text>
+            <MultilineTextField />
+          </DivContainer>
+          <H3Text>Choose Theme to preview </H3Text>
+          <ThemeSelector />
         </Div>
+
       </div>
     </ThemeProvider>
   );

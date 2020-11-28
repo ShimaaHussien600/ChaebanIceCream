@@ -8,11 +8,13 @@ import MultilineTextField from '../../components/MultilineTextField';
 import ICECREAM_LogoPink from '../../assets/images/ICECREAM_LogoPink.png';
 
 const SytledH1 = styled.h1`
-  color: ${(props: any) => props.theme.textColor};
+  color: ${(props) => props.theme.headerColor};
+  font-family: cursive;
 `;
 const GlobalStyle = createGlobalStyle`
   body {
-    background-color: ${(props: any) => props.theme.backgroundColor};
+    background-color: ${(props) => props.theme.backgroundColor};
+    background-image: none
   }
 `;
 
@@ -56,27 +58,46 @@ const Div = styled.div`
   display: flex
 `
 const DivContainer = styled.div`
-  display: inline-flex;
-  overflow: hidden;
+  display: ${(props) => props.oneElement ? 'flex' : 'inline-flex'};
+  overflow: ${(props) => props.oneElement ? 'none' : 'hidden'};
   width: 50%;
   margin-bottom: 40px;
-  justify-content: space-between;
+  justify-content: ${(props) => props.oneElement ? 'center' : 'space-between'};
   align-items: center;
 `
-//   font-family: "Helvetica Neue",Arial,sans-serif",
 
-const H3Text = styled.h1`
-  color: ${(props: any) => props.theme.textColor};
+const H3Text = styled.span`
+  color: ${(props) => props.theme.textColor};
+  font-weight: bold;
+  font-size: 20px;
+  font-family: cursive;
 `
+const TextFormContainer = styled.div`
+  width: 55%;
+  justify-content: ${(props) => props.alignRight ? 'flex-start' : 'center'};
+  align-items: center;
+`
+const StyledButton = styled.button`
+  color: ${(props) => props.theme.secondaryTextColor};
+  background-color: ${(props) => props.theme.primary};
+  box-shadow: none;
+  border: 0px;
+  border-radius: 4px;
+  font-size: 1.2em;
+  min-width: 120px;
+  padding: 12px;
+  margin: 20px 0px 0px 0px;
+`;
+
 
 function Input() {
-  const theme = useSelector((state: any) => state.themeReducer.theme);
+  const theme = useSelector((state) => state.themeReducer.theme);
+  const themeName = theme.themeName
 
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <GlobalStyle />
-
+        {themeName !== 'pinky' && <GlobalStyle />}
         <Nav>
           <LogoImage src={ICECREAM_LogoPink} alt="logo" />
           <NavbarContainer>
@@ -87,14 +108,23 @@ function Input() {
         <Div>
           <DivContainer>
             <H3Text>Choose The date </H3Text>
-            <DatePickerDialog />
+            <TextFormContainer alignRight>
+              <DatePickerDialog />
+            </TextFormContainer>
           </DivContainer>
           <DivContainer>
             <H3Text>Enter your message </H3Text>
-            <MultilineTextField />
+            <TextFormContainer>
+              <MultilineTextField />
+            </TextFormContainer>
           </DivContainer>
-          <H3Text>Choose Theme to preview </H3Text>
-          <ThemeSelector />
+          <DivContainer >
+            <H3Text>Choose Theme to preview </H3Text>
+            <ThemeSelector />
+          </DivContainer>
+          <DivContainer oneElement>
+            <StyledButton >Save</StyledButton>
+          </DivContainer >
         </Div>
 
       </div>

@@ -1,9 +1,9 @@
 import * as Actions from './themeActions';
-import { darkTheme } from '../../../assets/themes';
+import { lightTheme } from '../../../assets/themes';
 
 
 export const initialThemeState = {
-    theme: darkTheme
+    theme: lightTheme
 };
 
 

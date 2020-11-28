@@ -15,26 +15,26 @@ export default function MultilineTextField() {
   const classes = useStyles();
   const [value, setValue] = useState('');
 
-  const handleChange = (event: any) => {
+  const handleChange = (event) => {
     setValue(event.target.value);
   };
 
   return (
     // <form className={classes.root} noValidate autoComplete="off">
-      <div>
-        <TextField
-          id="filled-multiline-flexible"
-          label="Your Message"
-          multiline
-          rows={5}
-        //   fullWidth
-          defaultValue={false}
-          value={value}
-          onChange={handleChange}
-          spellCheck={true}
-          variant="filled"
-        />
-      </div>
+    <div>
+      <TextField
+        id="filled-multiline-flexible"
+        label="Your Message"
+        multiline
+        rows={5}
+        fullWidth
+        defaultValue={false}
+        value={value}
+        onChange={handleChange}
+        spellCheck={true}
+        variant="filled"
+      />
+    </div>
     // {/* </form> */}
   );
 }

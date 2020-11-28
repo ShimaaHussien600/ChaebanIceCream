@@ -1,16 +1,29 @@
-export const darkTheme = {
-    backgroundColor: "#333333",
-    textColor: "#000000",
-    primary: "#77ccdd"
-}
 export const lightTheme = {
-    backgroundColor: '#f9f4f4a6',
-    textColor: "#ffffff",
-    textColorMain: "#f3827c",
-    primary: "#55aacc"
+    themeName: "light",
+    backgroundColor: '#ffffff',
+    tempPrimary: "#45adb7",
+    headerColor: "#45adb7",
+    textColor: "#45adb7",
+    secondaryTextColor: "#ffffff",
+    primary: "#45adb7"
 }
-export const partyTheme = {
-    backgroundColor: "#eeff00",
-    textColor: "#ff88cc",
-    primary: "#aa00ee"
+
+export const darkTheme = {
+    themeName: "dark",
+    backgroundColor: "#333333",
+    tempPrimary: "#ffffff",
+    headerColor: "#65b6bd",
+    textColor: "#65b6bd",
+    secondaryTextColor: "#ffffff",
+    primary: "#65b6bd"
+}
+
+export const pinkyTheme = {
+    themeName: "pinky",
+    backgroundColor: "#f9f4f4a6",
+    tempPrimary: "#ffffff",
+    headerColor: "#ffffff",
+    textColor: "#4c8d93",
+    secondaryTextColor: "#ffffff",
+    primary: "#4c8d93"
 }

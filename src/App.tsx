@@ -1,16 +1,25 @@
 import React from 'react';
 import { HashRouter as Router } from "react-router-dom";
-import { Provider } from 'react-redux';
-import store from './app_state/store';
+import { useSelector } from 'react-redux';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import Routes from './Routes';
 
 function App() {
+  const themeSelected = useSelector((state: any) => state.themeReducer.theme);
+  const themeName = themeSelected.themeName
+  const theme = createMuiTheme({
+    palette: {
+      type: themeName === 'dark' ? 'dark' : 'light'
+    },
+  });
+
   return (
-    <Provider store={store.store}>
-      <Router>
+
+    <Router>
+      {<ThemeProvider theme={theme}>
         <Routes />
-      </Router>
-    </Provider>
+      </ThemeProvider>}
+    </Router>
   );
 }
 export default App;

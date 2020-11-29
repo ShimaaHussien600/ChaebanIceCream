@@ -8,7 +8,8 @@ import {
 
 export default function DatePickerDialog() {
   // The first commit of Material-UI
-  const [selectedDate, setSelectedDate] = useState(new Date('2020-11-28'));
+  const today = new Date();
+  const [selectedDate, setSelectedDate] = useState(today);
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
@@ -22,6 +23,7 @@ export default function DatePickerDialog() {
         label="Date"
         fullWidth
         format="dd/MM/yyyy"
+        maxDate={today}
         value={selectedDate}
         onChange={handleDateChange}
         KeyboardButtonProps={{

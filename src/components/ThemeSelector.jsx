@@ -13,6 +13,17 @@ const StyledButton = styled.button`
   padding: 12px;
   border: ${(props) => props.outline ? '2px solid #4c8d93' : 0};
   background: url(img/tiger.png) no-repeat;
+
+  &:focus {
+    outline: none !important;
+    box-shadow: none;
+  }
+
+  @media (max-width: 767.98px) {
+    min-width: 100px;
+    padding: 10px; 
+  }
+  
 `;
 
 const ThemeContainer = styled.div`
@@ -20,6 +31,16 @@ const ThemeContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 767.98px) {
+    width: 100%;
+    margin-top: 10px;
+    justify-content: flex-end;
+  }
+  @media (max-width: 575.98px) {
+    width: 100%;
+    justify-content: flex-start;
+  }
 `
 
 const ThemeSelector = () => {

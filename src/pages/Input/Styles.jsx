@@ -1,5 +1,11 @@
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
+export const GlobalStyle = createGlobalStyle`
+  body {
+    background-color: ${(props) => props.theme.backgroundColor};
+    background-image: none
+  }
+`;
 export const Div = styled.div`
   height: 100%;
   margin-top : 80px;

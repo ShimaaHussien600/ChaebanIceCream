@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
@@ -11,13 +11,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MultilineTextField() {
-  const classes = useStyles();
-  const [value, setValue] = useState('');
+export default function MultilineTextField(props) {
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
+  const { message, handleChange } = props
+
 
   return (
     // <form className={classes.root} noValidate autoComplete="off">
@@ -29,7 +26,7 @@ export default function MultilineTextField() {
         rows={5}
         fullWidth
         defaultValue={false}
-        value={value}
+        value={message}
         onChange={handleChange}
         spellCheck={true}
         variant="filled"

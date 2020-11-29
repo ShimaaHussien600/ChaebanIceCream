@@ -5,6 +5,7 @@ export const lightTheme = {
     tempPrimary: "#45adb7",
     headerColor: "#45adb7",
     textColor: "#45adb7",
+    textMessageColor: "#000000",
     secondaryTextColor: "#ffffff",
     primary: "#45adb7"
 }
@@ -16,6 +17,7 @@ export const darkTheme = {
     tempPrimary: "#ffffff",
     headerColor: "#65b6bd",
     textColor: "#65b6bd",
+    textMessageColor: "#ffffff",
     secondaryTextColor: "#ffffff",
     primary: "#65b6bd"
 }
@@ -27,6 +29,7 @@ export const pinkyTheme = {
     tempPrimary: "#ffffff",
     headerColor: "#ffffff",
     textColor: "#4c8d93",
+    textMessageColor: "#000000",
     secondaryTextColor: "#ffffff",
     primary: "#4c8d93"
 }

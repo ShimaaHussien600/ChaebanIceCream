@@ -1,71 +1,135 @@
 import React from 'react';
-import { createGlobalStyle, ThemeProvider } from 'styled-components';
-import { useSelector } from 'react-redux';
+import { ThemeProvider } from 'styled-components';
+import { connect } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import '../../App.css';
 import HeaderBar from '../../components/HeaderBar';
 import ThemeSelector from '../../components/ThemeSelector';
 import DatePickerDialog from '../../components/DatePickerDialog';
 import MultilineTextField from '../../components/MultilineTextField';
 import NavigateButton from '../../components/NavigateButton';
+import { setMessage } from '../../app_state/reducers/services/serviceActions';
 import {
+  GlobalStyle,
   Div,
   DivContainer,
   H3Text,
   TextFormContainer
 } from './Styles';
 
-const GlobalStyle = createGlobalStyle`
-  body {
-    background-color: ${(props) => props.theme.backgroundColor};
-    background-image: none
+
+class Input extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      message: this.props.messageValue
+    };
   }
-`;
 
+  handleChange = (event) => {
+    this.setState({ message: event.target.value })
+  };
 
-function Input() {
-  const theme = useSelector((state) => state.themeReducer.theme);
-  const themeName = theme.themeName
+  handleSubmit = () => {
+    let message = this.state.message;
+    if (message && (message.length > 0)) {
+      this.props.setMessage(this.state.message)
+      this.props.history.push('/output')
+    }
+    else {
+      toast('🦄 Enter your message!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  };
 
-  return (
-    <ThemeProvider theme={theme}>
-      <div className="App">
-        {themeName !== 'pinky' && <GlobalStyle />}
+  render() {
+    const { message } = this.state
+    const { theme } = this.props
+    const themeName = theme.themeName
 
-        <HeaderBar />
+    return (
+      <ThemeProvider theme={theme}>
+        <div className="App">
+          {themeName !== 'pinky' && <GlobalStyle />}
 
-        {/* The main Body content */}
-        <Div>
-          {/* The date view */}
-          <DivContainer>
-            <H3Text>Choose The date </H3Text>
-            <TextFormContainer alignRight>
-              <DatePickerDialog />
-            </TextFormContainer>
-          </DivContainer>
+          <HeaderBar />
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
+          {/* The main Body content */}
+          <Div>
+            {/* The date view */}
+            <DivContainer>
+              <H3Text>Choose The date </H3Text>
+              <TextFormContainer alignRight>
+                <DatePickerDialog />
+              </TextFormContainer>
+            </DivContainer>
 
-          {/* The textarea view */}
-          <DivContainer>
-            <H3Text>Enter your message </H3Text>
-            <TextFormContainer>
-              <MultilineTextField />
-            </TextFormContainer>
-          </DivContainer>
+            {/* The textarea view */}
+            <DivContainer>
+              <H3Text>Enter your message </H3Text>
+              <TextFormContainer>
+                <MultilineTextField
+                  message={message}
+                  handleChange={this.handleChange}
+                />
+              </TextFormContainer>
+            </DivContainer>
 
-          {/* Theme view */}
-          <DivContainer >
-            <H3Text>Choose Theme to preview </H3Text>
-            <ThemeSelector />
-          </DivContainer>
+            {/* Theme view */}
+            <DivContainer >
+              <H3Text>Choose Theme to preview </H3Text>
+              <ThemeSelector />
+            </DivContainer>
 
-          {/* Save button view */}
-          <DivContainer oneElement>
-            <NavigateButton />
-          </DivContainer >
+            {/* Save button view */}
+            <DivContainer oneElement>
+              <NavigateButton
+                type="Done"
+                onClick={this.handleSubmit} />
+            </DivContainer >
 
-        </Div>
+          </Div>
 
-      </div>
-    </ThemeProvider>
-  );
+        </div>
+      </ThemeProvider>
+    );
+  }
 }
-export default Input;
+
+const mapStateToProps = (state) => {
+  console.log("stateINPUT", state)
+  return {
+    theme: state.themeReducer.theme,
+    selectedDate: state.serviceReducer.selectedDate,
+    messageValue: state.serviceReducer.messageValue
+  };
+}
+function mapDispatchToProps(dispatch) {
+  return {
+    setMessage: (message) => {
+      dispatch(setMessage(message));
+    }
+  };
+}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Input);

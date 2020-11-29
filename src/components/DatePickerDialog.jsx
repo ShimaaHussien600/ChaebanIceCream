@@ -5,14 +5,21 @@ import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
 } from '@material-ui/pickers';
+import { useSelector, useDispatch } from 'react-redux';
+import { setDate } from '../app_state/reducers/services/serviceActions';
 
 export default function DatePickerDialog() {
   // The first commit of Material-UI
+
   const today = new Date();
-  const [selectedDate, setSelectedDate] = useState(today);
+  const initialDate = useSelector((state) => state.serviceReducer.selectedDate);
+  const [selectedDate, setSelectedDate] = useState(initialDate);
+
+  const dispatch = useDispatch();
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
+    dispatch(setDate(date));
   };
 
   return (
@@ -29,7 +36,6 @@ export default function DatePickerDialog() {
         KeyboardButtonProps={{
           'aria-label': 'change date',
         }}
-
       />
 
     </MuiPickersUtilsProvider>

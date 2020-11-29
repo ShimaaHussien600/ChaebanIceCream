@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { applyTheme } from '../app_state/reducers/theme/themeActions';
 import { darkTheme, lightTheme, pinkyTheme } from '../assets/themes';
 
@@ -45,14 +45,16 @@ const ThemeContainer = styled.div`
 
 const ThemeSelector = () => {
 
-  const dispatch = useDispatch();
-  const changeTheme = (theme) => {
+  const initialTheme = useSelector((state) => state.themeReducer.theme);
 
+  const dispatch = useDispatch();
+  const [selectedTheme, setSelectedTheme] = useState(initialTheme);
+  const changeTheme = (theme) => {
+    setSelectedTheme(theme)
     dispatch(applyTheme(theme));
   }
 
-  const theme = useSelector((state) => state.themeReducer.theme);
-  const themeName = theme.themeName
+  const themeName = selectedTheme.themeName
 
   return (
     <ThemeContainer>

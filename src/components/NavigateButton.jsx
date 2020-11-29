@@ -1,4 +1,3 @@
-import { withRouter } from 'react-router-dom'
 import styled from 'styled-components';
 
 const StyledButton = styled.button`
@@ -10,16 +9,24 @@ const StyledButton = styled.button`
   font-size: 1.2em;
   min-width: 120px;
   padding: 12px;
-  margin: 20px 0px 0px 0px;
+  margin: 20px 35px 0px 0px;
 
+  &:focus {
+    outline: none !important;
+    box-shadow: none;
+  }
+  
   @media (max-width: 575.98px) {
     margin-top: 20px;
     text-align: center
   }
 `;
 
-const NavigateButton = withRouter(({ history }) => (
-    <StyledButton onClick={() => history.push('/output')}>Save</StyledButton>
-))
+const NavigateButton = ({ type, onClick }) => (
+  <StyledButton
+    onClick={onClick}>
+    {type}
+  </StyledButton>
+)
 
 export default NavigateButton;

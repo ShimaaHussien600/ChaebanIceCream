@@ -60,13 +60,13 @@ const ThemeSelector = () => {
   return (
     <ThemeContainer>
       <StyledButton
-        outline={themeName == 'light'}
+        outline={themeName === 'light'}
         onClick={() => changeTheme(lightTheme)}>Light</StyledButton>
       <StyledButton
-        outline={themeName == 'dark'}
+        outline={themeName === 'dark'}
         onClick={() => changeTheme(darkTheme)}>Dark</StyledButton>
       <StyledButton
-        outline={themeName == 'pinky'}
+        outline={themeName === 'pinky'}
         onClick={() => changeTheme(pinkyTheme)}>Pinky</StyledButton>
     </ThemeContainer>
   );

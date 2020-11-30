@@ -115,7 +115,6 @@ class Input extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log("stateINPUT", state)
   return {
     theme: state.themeReducer.theme,
     selectedDate: state.serviceReducer.selectedDate,

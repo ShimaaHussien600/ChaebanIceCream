@@ -85,7 +85,7 @@ class Input extends React.Component {
             {/* The textarea view */}
             <DivContainer>
               <H3Text>Enter your message </H3Text>
-              <TextFormContainer>
+              <TextFormContainer top>
                 <MultilineTextField
                   message={message}
                   handleChange={this.handleChange}

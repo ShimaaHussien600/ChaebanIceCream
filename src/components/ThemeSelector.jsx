@@ -34,12 +34,13 @@ const ThemeContainer = styled.div`
 
   @media (max-width: 767.98px) {
     width: 100%;
-    margin-top: 10px;
+    margin-top: 15px;
     justify-content: flex-end;
   }
   @media (max-width: 575.98px) {
     width: 100%;
-    justify-content: flex-start;
+    margin-top: 25px;
+    justify-content: center;
   }
 `
 

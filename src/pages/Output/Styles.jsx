@@ -33,6 +33,7 @@ export const DivContainer = styled.div`
   text-align: ${(props) => props.alignLeft ? 'left' : 'center'};
   margin-top: ${(props) => props.top ? '40px' : '0px'};
 `
+
 export const MessageContainer = styled.div`
   width: 70%;
   min-height: 200px;
@@ -57,6 +58,19 @@ export const H3Text = styled.span`
   font-weight: bold;
   font-size: 20px;
   font-family: cursive;
+`
+export const ButtonText = styled.button`
+  background: transparent;
+  border: 0px;
+  color: ${(props) => props.theme.textColor};
+  font-weight: bold;
+  font-size: 20px;
+  font-family: cursive;
+
+  &:focus {
+    outline: none !important;
+    box-shadow: none;
+  }
 `
 export const MessageBody = styled.p`
   color: ${(props) => props.theme.textMessageColor};

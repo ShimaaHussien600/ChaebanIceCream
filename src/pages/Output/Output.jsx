@@ -14,9 +14,10 @@ import {
   DivContainer,
   H3Text,
   MessageContainer,
-  MessageBody
+  MessageBody,
+  ButtonText
 } from './Styles';
-
+import GitHub from '@material-ui/icons/GitHub';
 
 class Output extends React.Component {
   constructor(props) {
@@ -65,10 +66,14 @@ class Output extends React.Component {
   handleEdit = () => {
     this.props.history.push('/')
   };
+  openGitHub = () => {
+    window.open("https://github.com/ShimaaHussien600/ChaebanIceCream", "_blank")
+  }
 
   render() {
     const { theme, messageValue } = this.props
     const themeName = theme.themeName
+    const themeColor = theme.textColor
 
     return (
       <ThemeProvider theme={theme}>
@@ -94,8 +99,14 @@ class Output extends React.Component {
                 </MessageContainer>
               </DivContainer>
 
+              {/* Github repo information */}
+              <DivContainer >
+                <GitHub fontSize={"large"} style={{ color: themeColor, margin: "5px" }} />
+                <ButtonText onClick={this.openGitHub}> Press me for more details! </ButtonText>
+              </DivContainer >
+
               {/* Save button view */}
-              <DivContainer alignLeft>
+              <DivContainer >
                 <NavigateButton
                   type="New"
                   onClick={this.handleNew} />
@@ -103,6 +114,7 @@ class Output extends React.Component {
                   type="Edit"
                   onClick={this.handleEdit} />
               </DivContainer >
+
             </Container>
           </Div>
 

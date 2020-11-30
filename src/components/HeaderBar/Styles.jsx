@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const Nav = styled.nav`
   background: ${(props) => props.theme.headerBackground};
   height: 80px;
-  margin-bottom: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,10 +16,7 @@ export const Nav = styled.nav`
     transition: 0.8s all ease;
   }
   @media (max-width: 767.98px) {
-    height: 100px;
-  }
-  @media (max-width: 575.98px) {
-    height: 150px;
+    height: 70px;
   }
 `
 export const NavbarContainer = styled.div`
@@ -32,14 +28,32 @@ export const NavbarContainer = styled.div`
   max-width: 700px;
   background: #0000;
   @media (max-width: 767.98px) {
-    height: 100px;
-  }
-  @media (max-width: 575.98px) {
-    height: 150px;
+    height: 70px;
   }
 `
 
 export const LogoImage = styled.img`
-height: 80px;
-width: 130px;
+  height: 80px;
+  width: 130px;
+
+  @media (max-width: 767.98px) {
+    height: 60px;
+    width: 100px;
+  }
 `
+export const SytledH1 = styled.h1`
+  color: ${(props) => props.theme.headerColor};
+  font-family: cursive;
+
+  @media (max-width: 767.98px) {
+    font-size: 1.3rem;
+    margin-block-start: 0.9em;
+  }
+
+  @media (max-width: 575.98px) {
+    font-size: 1.2rem;
+    margin-block-start: 0.3em;
+    margin-block-end: 0.2em;
+  }
+  
+`;

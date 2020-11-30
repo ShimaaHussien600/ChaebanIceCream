@@ -8,11 +8,15 @@ export const GlobalStyle = createGlobalStyle`
 `;
 export const Div = styled.div`
   height: 100%;
-  margin-top : 80px;
+  margin-top : 50px;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  display: flex
+  display: flex;
+
+  @media (max-width: 767.98px) {
+    margin-top : 40px;
+  }
 `
 export const DivContainer = styled.div`
   display: ${(props) => props.oneElement ? 'flex' : 'inline-flex'};
@@ -23,11 +27,12 @@ export const DivContainer = styled.div`
   align-items: center;
 
   @media (max-width: 767.98px) {
-    width: 85%;
+    width:  ${(props) => props.oneElement ? '100%' : '85%'};
   }
   @media (max-width: 575.98px) {
     display: block;
-    text-align: ${(props) => props.oneElement ? 'center' : 'left'};
+    width: 100%;
+    text-align: center;
   }
 `
 
@@ -41,4 +46,11 @@ export const TextFormContainer = styled.div`
   width: 55%;
   justify-content: ${(props) => props.alignRight ? 'flex-start' : 'center'};
   align-items: center;
+
+
+  @media (max-width: 575.98px) {
+    width: 80%;
+    display: inline-block;
+    margin-top: ${(props) => props.top ? '15px' : '0'};
+  }
 `

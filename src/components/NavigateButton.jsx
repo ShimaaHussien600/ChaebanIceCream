@@ -9,7 +9,7 @@ const StyledButton = styled.button`
   font-size: 1.2em;
   min-width: 120px;
   padding: 12px;
-  margin: 20px 35px 0px 0px;
+  margin: 20px 10px 0px 10px;
 
   &:focus {
     outline: none !important;

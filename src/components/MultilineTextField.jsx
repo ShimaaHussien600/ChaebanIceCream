@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import { withStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -11,6 +12,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const CustomTextField = withStyles({
+  root: {
+    '& .MuiFormLabel-root.Mui-focused': {
+      color: "#45adb7"
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: "#45adb7",
+    }
+  },
+})(TextField);
+
+
 export default function MultilineTextField(props) {
 
   const { message, handleChange } = props
@@ -19,7 +32,7 @@ export default function MultilineTextField(props) {
   return (
     // <form className={classes.root} noValidate autoComplete="off">
     <div>
-      <TextField
+      <CustomTextField
         id="filled-multiline-flexible"
         label="Your Message"
         multiline

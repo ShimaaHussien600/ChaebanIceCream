@@ -7,6 +7,18 @@ import {
 } from '@material-ui/pickers';
 import { useSelector, useDispatch } from 'react-redux';
 import { setDate } from '../app_state/reducers/services/serviceActions';
+import { withStyles } from '@material-ui/core/styles';
+
+const CustomKeyboardDatePicker = withStyles({
+  root: {
+    '& .MuiFormLabel-root.Mui-focused': {
+      color: "#45adb7"
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: "#45adb7",
+    }
+  },
+})(KeyboardDatePicker);
 
 export default function DatePickerDialog() {
   // The first commit of Material-UI
@@ -24,7 +36,7 @@ export default function DatePickerDialog() {
 
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
-      <KeyboardDatePicker
+      <CustomKeyboardDatePicker
         margin="normal"
         id="date-picker-dialog"
         label="Date"
